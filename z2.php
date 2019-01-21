@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>Document</title>
 </head>
 <body>
@@ -24,11 +25,11 @@ $prvi=false;
  if (!empty($array)){
      $box =intval(floor(sqrt(max($array)))+1);
      $aritSredina=array_sum($array) / count($array);
-     echo '<table>';
+     echo '<table class="collapse">';
      for ($y=0;$y<$box;$y++){
          echo '<tr>';
          for ($x=0;$x<$box;$x++){
-             echo '<td style="border: 1px solid;width: 29px;height: 29px ;">';
+             echo '<td class="tablica">';
              foreach ($array as $i)
              {
                  if (($i%2 === 0) && (($y*$box+$x+1) === intval($i))){

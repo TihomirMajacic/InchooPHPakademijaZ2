@@ -1,0 +1,10 @@
+.tablica{
+    width: 29px;
+    height: 29px;
+    border: 1px solid;
+
+}
+.collapse {
+    border-collapse: collapse;
+
+}
