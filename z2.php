@@ -47,6 +47,10 @@ $prvi=false;
      }
     echo '</table>';
  }
+ else {
+     echo 'Nisu pronađene nikakve vrijednosti <br>' ;
+     echo '<a href="index.html">Povratak na stranicu</a>';
+ }
  ?>
 
 </body>
