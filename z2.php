@@ -17,30 +17,36 @@ if (!isset($_POST['broj'])){
 }
 $prvi=false;
  $string=$_POST['broj'];
+ $string = preg_replace('/[^0-9,]/', '', $string);
  $array=explode(',',$string);
- $aritSredina=array_sum($array) / count($array);
- echo '<table>';
- for ($y=0;$y<20;$y++){
-     echo '<tr>';
-     for ($x=0;$x<20;$x++){
-         echo '<td style="border: 1px solid;width: ',sqrt(max($array))+1,'px;height: ',sqrt(max($array))+1,'px ;">';
-         foreach ($array as $i)
-         {
-             if (($i%2==0) && (($y*20+$x+1)==$i)){
-                 if (!$prvi && $i>$aritSredina) {
-                     echo '<b>',$i,'</b>';
-                     $prvi=true;
+ $array = array_filter($array);
+
+ if (!empty($array)){
+     $box =intval(floor(sqrt(max($array)))+1);
+     $aritSredina=array_sum($array) / count($array);
+     echo '<table>';
+     for ($y=0;$y<$box;$y++){
+         echo '<tr>';
+         for ($x=0;$x<$box;$x++){
+             echo '<td style="border: 1px solid;width: 29px;height: 29px ;">';
+             foreach ($array as $i)
+             {
+                 if (($i%2 === 0) && (($y*$box+$x+1) === intval($i))){
+                     if (!$prvi && $i>$aritSredina) {
+                         echo '<b>',$i,'</b>';
+                         $prvi=true;
+                         break;
+                     }
+                     echo $i ;
                      break;
                  }
-                 echo $i ;
-                 break;
              }
+             echo '</td>';
          }
-         echo '</td>';
+         echo '</tr>';
      }
-     echo '</tr>';
+    echo '</table>';
  }
-echo '</table>';
  ?>
 
 </body>
